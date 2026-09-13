@@ -59,7 +59,7 @@ svaret at den *ikke* drives synaptisk i det hele tatt — DB4 kjører på tonisk
 +28.0 mot en synaptisk sum på +0.01.
 
 **Fargeskalaen er fast (0–40 Hz), ikke normalisert til aktiviteten.** En skala som
-følger nettverket får alle overlevende nevroner til å se varmere ut i det du
+følger nettverket får alle overlevende nevroner til å se varmere ut idet du
 ablerer de travleste, noe som leses som at resten kompenserer når ingenting slikt
 har skjedd. Hver celle skriver raten sin uansett.
 

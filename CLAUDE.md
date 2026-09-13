@@ -47,7 +47,7 @@ verden ─▶ sensing.py ─▶ neural.py ─▶ body.py ─▶ verden
 framerate og tar så mange nevrale steg som får plass (rest bæres over i
 `_neural_debt`).
 
-## Load-bearing konstanter — ikke rør uten å måle
+## Bærende konstanter — ikke rør uten å måle
 
 **`neural.py`.** `g_syn=150, i_tonic=28, noise=18` gir 10.9 ± 1.9 Hz over seeds.
 Dette er et smalt vindu. Nettverket er **bistabilt** uten to ting:
