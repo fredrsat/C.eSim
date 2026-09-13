@@ -1,0 +1,36 @@
+# C.eSim — connectome-drevet C. elegans-simulering
+
+> En simulering av C. elegans der et spiking-nettverk over hele 299-nevroners connectomet driver en orm som krabber, lukter seg fram og reagerer i en 2D-verden, med nevroninspektør og kontrollerte ablasjonseksperimenter.
+
+Nettverket kjører hvert av de 299 nevronene som en lekk integrate-and-fire-enhet over connectome-matrisen (2279 synapser, exc/inh-fortegn), normalisert på spektralradius og med spike-frekvens-adaptasjon. Kroppen følger sitt eget hode langs en bane med oscillerende krumning; connectomet leverer retning (AVA/AVD/AVE mot AVB/PVC), amplitude og styring — ikke rytmen. Nese-berøring gir revers direkte fra koblingene; kjemotaksi (piruett og klinotaksi) er skrevet eksplisitt i `sensing.py` fordi datasettet mangler forbindelsene den krever.
+
+Teknisk: Python 3, numpy og pygame-ce. Kjøres med `python main.py`, uten vindu med `python main.py --headless 300`, og alle målte påstander i README reproduseres med `python validate.py`. `tab` åpner nevronkartet med ablasjon (høyreklikk), tvangsaktivering (`s`) og parvise lesjonseksperimenter (`e`).
+
+Koden er MIT-lisensiert; dataene under `data/` kommer fra 3BIM20162017/CElegansTP (opprinnelig OpenWorm) og er ikke dekket av lisensen.
+
+## Docs
+
+- [README.md](https://github.com/fredrsat/C.eSim/blob/main/README.md): full dokumentasjon — kjøring, tastatur, nevronkartet, ablasjonsmetodikk, hva som kommer fra connectomet og ikke, målt atferd og kjente avvik
+- [CLAUDE.md](https://github.com/fredrsat/C.eSim/blob/main/CLAUDE.md): instruksjoner for AI-assistert arbeid i repoet
+
+## Source
+
+- [main.py](https://github.com/fredrsat/C.eSim/blob/main/main.py): inngangspunkt, vindu og headless-modus
+- [celegans/neural.py](https://github.com/fredrsat/C.eSim/blob/main/celegans/neural.py): LIF-nettverket over hele connectomet
+- [celegans/connectome.py](https://github.com/fredrsat/C.eSim/blob/main/celegans/connectome.py): leser CSV-dataene til numpy-matriser
+- [celegans/sensing.py](https://github.com/fredrsat/C.eSim/blob/main/celegans/sensing.py): verden → sensorisk strøm, og de to kjemotaksi-reglene
+- [celegans/body.py](https://github.com/fredrsat/C.eSim/blob/main/celegans/body.py): kropp, gange og kommando-avlesning
+- [celegans/world.py](https://github.com/fredrsat/C.eSim/blob/main/celegans/world.py): arena, luktfelt, mat, hindringer, kollisjon
+- [celegans/simulation.py](https://github.com/fredrsat/C.eSim/blob/main/celegans/simulation.py): binder delene sammen
+- [celegans/inspector.py](https://github.com/fredrsat/C.eSim/blob/main/celegans/inspector.py): nevronkartet og inspektørpanelet
+- [celegans/experiment.py](https://github.com/fredrsat/C.eSim/blob/main/celegans/experiment.py): parvise ablasjonseksperimenter
+- [celegans/analysis.py](https://github.com/fredrsat/C.eSim/blob/main/celegans/analysis.py): strukturmål regnet ut fra connectomet
+- [celegans/annotations.py](https://github.com/fredrsat/C.eSim/blob/main/celegans/annotations.py): litteraturannotasjoner for alle 299 nevroner
+- [validate.py](https://github.com/fredrsat/C.eSim/blob/main/validate.py): reproduserer alle målingene i README
+
+## Optional
+
+- [data/Connectome.csv](https://github.com/fredrsat/C.eSim/blob/main/data/Connectome.csv): 299 nevroner, 2279 synapser med exc/inh-merking
+- [data/Neurons_to_Muscles.csv](https://github.com/fredrsat/C.eSim/blob/main/data/Neurons_to_Muscles.csv): motornevroner → 94 kroppsveggmuskler
+- [data/Sensory.csv](https://github.com/fredrsat/C.eSim/blob/main/data/Sensory.csv): funksjonsmerking for 86 sensoriske nevroner
+- [LICENSE](https://github.com/fredrsat/C.eSim/blob/main/LICENSE): MIT (gjelder koden, ikke dataene)
